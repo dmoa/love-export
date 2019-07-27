@@ -1,3 +1,21 @@
 bash("arg1=$1");
 batch("set arg1=%1");
-println(arg1);
+
+bash("SCRIPT_PATH=$(dirname `which $0`)");
+bash("PROJECT_PATH=$(pwd)");
+
+if (arg1 == "-W") {
+
+    bash("mkdir -p releases");
+
+    println("Converting project to .love file");
+
+    bash("zip -r ./releases/game.love . -x './releases/*'");
+    bash("cp $SCRIPT_PATH/win $SCRIPT_PATH");
+
+} else {
+    println("INVALID PARAMETER GIVEN");
+    bash("exit 0"); 
+}
+
+println(PROJECT_PATH);
