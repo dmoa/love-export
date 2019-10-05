@@ -22,12 +22,12 @@ elif [ "$arg1" == "-M" ]; then
   zip -r ./releases/game.love . -x './releases/*'
   rm -rf $SCRIPT_PATH/temp
   cp -R $SCRIPT_PATH/mac $SCRIPT_PATH/temp
-  cp $PROJECT_PATH/releases/game.love $SCRIPT_PATH/temp/Contents/Recources
+  cp $PROJECT_PATH/releases/game.love $SCRIPT_PATH/temp/Contents/Resources
   cd $SCRIPT_PATH/temp/
   zip -r $PROJECT_PATH/releases/mac.zip .
   rm -rf $SCRIPT_PATH/temp
   "echo" "-e" "FINISHED"
-  exit 0
+  exit 0 
 else
   "echo" "-e" "INVALID PARAMETER GIVEN"
   exit 0
