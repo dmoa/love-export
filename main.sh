@@ -6,7 +6,7 @@ PROJECT_PATH=$(pwd)
 if [ "$arg1" == "-W" ]; then
   mkdir -p releases
   "echo" "-e" "Converting project to .love file"
-  zip -r ./releases/game.love . -x './releases/*'
+  zip -r ./releases/game.love . -x './releases/*' '.*'
   rm -rf $SCRIPT_PATH/temp
   cp -R $SCRIPT_PATH/win $SCRIPT_PATH/temp
   cp $PROJECT_PATH/releases/game.love $SCRIPT_PATH/temp
@@ -19,7 +19,7 @@ if [ "$arg1" == "-W" ]; then
   "echo" "-e" "FINISHED"
 elif [ "$arg1" == "-M" ]; then
   "echo" "-e" "Converting project to .love file"
-  zip -r ./releases/game.love . -x './releases/*'
+  zip -r ./releases/game.love . -x './releases/*' '.*'
   rm -rf $SCRIPT_PATH/temp
   cp -R $SCRIPT_PATH/mac $SCRIPT_PATH/temp
   cp $PROJECT_PATH/releases/game.love $SCRIPT_PATH/temp/Contents/Resources
