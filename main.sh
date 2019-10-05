@@ -1,4 +1,5 @@
 arg1=$1
+arg2=$2
 
 SCRIPT_PATH=$(dirname `which $0`)
 PROJECT_PATH=$(pwd)
@@ -11,8 +12,10 @@ if [ "$arg1" == "-W" ]; then
   cp $PROJECT_PATH/releases/game.love $SCRIPT_PATH/temp
   cat $SCRIPT_PATH/temp/love.exe $SCRIPT_PATH/temp/game.love > $SCRIPT_PATH/temp/game.exe
   rm $SCRIPT_PATH/temp/game.love
-  rm $SCRIPT_PATH/temp/game.exe
-  zip -r ./releases/game_win.zip $SCRIPT_PATH/temp/
+  rm $SCRIPT_PATH/temp/love.exe
+  cd $SCRIPT_PATH/temp/
+  zip -r $PROJECT_PATH/releases/win.zip .
+  rm -rf $SCRIPT_PATH/temp
 else
   "echo" "-e" "INVALID PARAMETER GIVEN"
   exit 0
