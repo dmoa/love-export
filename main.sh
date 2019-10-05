@@ -16,6 +16,16 @@ if [ "$arg1" == "-W" ]; then
   cd $SCRIPT_PATH/temp/
   zip -r $PROJECT_PATH/releases/win.zip .
   rm -rf $SCRIPT_PATH/temp
+elif [ "$arg1" == "-M" ]; then
+  "echo" "-e" "Converting project to .love file"
+  zip -r ./releases/game.love . -x './releases/*'
+  rm -rf $SCRIPT_PATH/temp
+  cp -R $SCRIPT_PATH/mac $SCRIPT_PATH/temp
+  cp $PROJECT_PATH/releases/game.love $SCRIPT_PATH/temp/Contents/Recources
+  cd $SCRIPT_PATH/temp/
+  zip -r $PROJECT_PATH/releases/mac.zip .
+  rm -rf $SCRIPT_PATH/temp
+  exit 0
 else
   "echo" "-e" "INVALID PARAMETER GIVEN"
   exit 0
