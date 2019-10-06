@@ -3,6 +3,8 @@ arg2=$2
 
 SCRIPT_PATH=$(dirname `which $0`)
 PROJECT_PATH=$(pwd)
+
+
 if [ "$arg1" == "-W" ]; then
   mkdir -p releases
   "echo" "-e" "Converting project to .love file"
@@ -17,6 +19,7 @@ if [ "$arg1" == "-W" ]; then
   zip -r $PROJECT_PATH/releases/windows.zip .
   rm -rf $SCRIPT_PATH/temp
   "echo" "-e" "FINISHED"
+
 elif [ "$arg1" == "-M" ]; then
   "echo" "-e" "Converting project to .love file"
   zip -r ./releases/game.love . -x './releases/*' '.*'
@@ -28,14 +31,25 @@ elif [ "$arg1" == "-M" ]; then
   rm -rf $SCRIPT_PATH/temp
   "echo" "-e" "FINISHED"
   exit 0
+
+elif [ "$arg1" == "-L" ]; then
+  "echo" "-e" "Converting project to .love file"
+  zip -r ./releases/game.love . -x './releases/*' '.*'
+  rm -rf $SCRIPT_PATH/temp
+  cp -R $SCRIPT_PATH/linux $SCRIPT_PATH/temp
+  cd $SCRIPT_PATH/temp
+  cat $SCRIPT_PATH/linux $PROJECT_PATH/releases/game.love > game
+  zip -r $PROJECT_PATH/releases/linux.zip .
+  rm -rf $SCRIPT_PATH/temp
+  "echo" "-e" "FINISHED"
+  exit 0
+
 elif [ "$arg1" == "-S" ]; then
   "echo" "-e" "Creating Source Code Zip"
   zip -r ./releases/source.zip . -x './releases/*' '.*'
   exit 0
+
 else
   "echo" "-e" "INVALID PARAMETER GIVEN"
   exit 0
 fi
-"echo" "-e" "$PROJECT_PATH"
-
-
