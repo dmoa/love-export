@@ -37,7 +37,7 @@ elif [ "$arg1" == "-L" ]; then
   zip -r ./releases/game.love . -x './releases/*' '.*'
   rm -rf $SCRIPT_PATH/temp
   cp -R $SCRIPT_PATH/linux $SCRIPT_PATH/temp
-  cp $PROJECT_PATH/releases/game.love $SCRIPT_PATH/temp/
+  cp $PROJECT_PATH/releases/game.love $SCRIPT_PATH/temp/application
   cd $SCRIPT_PATH/temp
   zip -r $PROJECT_PATH/releases/linux.zip .
   rm -rf $SCRIPT_PATH/temp
