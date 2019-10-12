@@ -23,11 +23,11 @@ if [ "$arg1" == "-W" ]; then
 elif [ "$arg1" == "-M" ]; then
   "echo" "Converting project to .love file"
   zip -r ./releases/game.love . -x './releases/*' '.*'
-  rm -rf $SCRIPT_PATH/temp t
+  rm -rf $SCRIPT_PATH/temp
   cp -R $SCRIPT_PATH/mac $SCRIPT_PATH/temp
-  cp $PROJECT_PATH/releases/game.love $SCRIPT_PATH/temp/Contents/Resources
-  cd $SCRIPT_PATH/temp/
-  zip -r $PROJECT_PATH/releases/mac.zip .
+  cp $PROJECT_PATH/releases/game.love $SCRIPT_PATH/temp/mac.app/Contents/Resources
+  cd $SCRIPT_PATH/temp
+  zip -r $PROJECT_PATH/releases/mac.zip . -x './releases/*' '.*'
   rm -rf $SCRIPT_PATH/temp
   "echo" "FINISHED"
   exit 0
