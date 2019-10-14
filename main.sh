@@ -51,6 +51,28 @@ elif [ "$arg1" == "-S" ]; then
   zip -r ./releases/source.zip . -x './releases/*' '.*'
   exit 0
 
+elif [ "$arg1" == "-H" ]; then
+  "echo" "
+  Commands:
+
+    -W
+    release for windows
+
+    -M 
+    release for Mac
+
+    -L
+    release for Linux
+
+    -S
+    release for Source Code
+
+
+  - by Stan O (https://stan.xyz)
+  - Repository at https://github.com/dmoa/love-export
+  "
+  exit 0
+
 else
   "echo" "INVALID PARAMETER GIVEN"
   exit 0
