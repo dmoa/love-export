@@ -6,16 +6,15 @@ A simple release tool for the game framework LOVE
 <br>
 Commands:
 <br>
-<br>
--W
+-W <br>
 release for windows
 
--M 
+-M <br>
 release for Mac
 
--L
+-L <br>
 release for Linux
 
--S
+-S <br>
 release for Source Code
 
