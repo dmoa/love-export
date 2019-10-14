@@ -21,6 +21,7 @@ if [ "$arg1" == "-W" ]; then
   "echo" "FINISHED"
 
 elif [ "$arg1" == "-M" ]; then
+  mkdir -p releases
   "echo" "Converting project to .love file"
   zip -r ./releases/game.love . -x './releases/*' '.*'
   rm -rf $SCRIPT_PATH/temp
@@ -33,6 +34,7 @@ elif [ "$arg1" == "-M" ]; then
   exit 0
 
 elif [ "$arg1" == "-L" ]; then
+  mkdir -p releases
   "echo" "Converting project to .love file"
   zip -r ./releases/game.love . -x './releases/*' '.*'
   rm -rf $SCRIPT_PATH/temp
