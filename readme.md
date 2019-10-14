@@ -6,6 +6,7 @@ A simple release tool for the game framework LOVE
 <br>
 Commands:
 <br>
+
 -W <br>
 release for windows
 
