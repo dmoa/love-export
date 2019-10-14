@@ -4,7 +4,7 @@ A simple release tool for the game framework LOVE
 ----
 <br>
 <br>
-Commands:
+Commands:<br>
 <br>
 
 <p>
