@@ -27,7 +27,7 @@ elif [ "$arg1" == "-M" ]; then
   cp -R $SCRIPT_PATH/mac $SCRIPT_PATH/temp
   cp $PROJECT_PATH/releases/game.love $SCRIPT_PATH/temp/mac.app/Contents/Resources
   cd $SCRIPT_PATH/temp
-  zip -r $PROJECT_PATH/releases/mac.zip . -x './releases/*' '.*'
+  zip -r -y $PROJECT_PATH/releases/mac.zip . -x './releases/*' '.*'
   rm -rf $SCRIPT_PATH/temp
   "echo" "FINISHED"
   exit 0
