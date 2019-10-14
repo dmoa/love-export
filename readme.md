@@ -5,9 +5,8 @@ A simple release tool for the game framework LOVE
 <br>
 <br>
 Commands:<br>
-<br>
 
-<p>
+
 -W <br>
 release for windows
 
@@ -19,4 +18,4 @@ release for Linux
 
 -S <br>
 release for Source Code
-</p>
+
