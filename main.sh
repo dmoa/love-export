@@ -51,6 +51,16 @@ elif [ "$arg1" == "-S" ]; then
   zip -r ./releases/source.zip . -x './releases/*' '.*'
   exit 0
 
+elif [ "$arg1" == "-IL" ]; then
+  cd $SCRIPT_PATH
+  rm -rf win
+  curl -L -O https://bitbucket.org/rude/love/downloads/love-$arg2-win64.zip
+  unzip love-$arg2-win64.zip
+  mv *win64 win
+  # rm -rf mac
+  # rm -rf linux
+  exit 0
+
 elif [ "$arg1" == "-H" ]; then
   "echo" "
   Commands:
@@ -70,6 +80,7 @@ elif [ "$arg1" == "-H" ]; then
 
   - by Stan O (https://stan.xyz)
   - Repository at https://github.com/dmoa/love-export
+  - Problems? Open an issue on github, or contact me on discord @dmoa#0001
   "
   exit 0
 
