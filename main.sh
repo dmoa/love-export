@@ -57,6 +57,14 @@ elif [ "$arg1" == "-IL" ]; then
   curl -L -O https://bitbucket.org/rude/love/downloads/love-$arg2-win64.zip
   unzip love-$arg2-win64.zip
   mv *win64 win
+  rm love-$arg2-win64.zip
+  cd win 
+  rm love.ico
+  rm game.ico
+  rm lovec.exe
+  rm readme.txt
+  rm license.txt
+  rm changes.txt
   # rm -rf mac
   # rm -rf linux
   exit 0
