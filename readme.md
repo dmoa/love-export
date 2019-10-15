@@ -3,7 +3,7 @@ lovex
 A simple release tool for the game framework LOVE
 ----
 <br>
-<h4> Commands: </h4> <br> <br> 
+<h3> Commands: </h3> <br> <br> 
 
 
 -W <br>
