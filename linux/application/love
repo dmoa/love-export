@@ -1,5 +1,0 @@
-#!/bin/sh
-          export LOVE_LAUNCHER_LOCATION=/Users/Stanislav003/Desktop/love-export
-          export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:/usr/bin:/usr/lib:/usr/lib/x86_64-linux-gnu:
-          /sbin/ldconfig -p | grep -q libstdc++ || export LD_LIBRARY_PATH=:/libstdc++/
-          exec  /usr/bin/love /game.love
