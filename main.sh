@@ -52,22 +52,55 @@ elif [ "$arg1" == "-S" ]; then
   exit 0
 
 elif [ "$arg1" == "-IL" ]; then
-  cd $SCRIPT_PATH
-  rm -rf win
-  curl -L -O https://bitbucket.org/rude/love/downloads/love-$arg2-win64.zip
-  unzip love-$arg2-win64.zip
-  mv *win64 win
-  rm love-$arg2-win64.zip
-  cd win 
-  rm love.ico
-  rm game.ico
-  rm lovec.exe
-  rm readme.txt
-  rm license.txt
-  rm changes.txt
-  # rm -rf mac
-  # rm -rf linux
-  exit 0
+  if [ -n "$arg2" ]; then
+    cd $SCRIPT_PATH
+    rm -rf win
+    curl -L -O https://bitbucket.org/rude/love/downloads/love-$arg2-win64.zip
+    unzip love-$arg2-win64.zip
+    mv *win64 win
+    rm love-$arg2-win64.zip
+    cd win 
+    rm love.ico
+    rm game.ico
+    rm lovec.exe
+    rm readme.txt
+    rm license.txt
+    rm changes.txt
+
+    cd ..
+    rm -rf mac
+    mkdir mac
+    cd mac
+    curl -L -O https://bitbucket.org/rude/love/downloads/love-$arg2-macos.zip
+    unzip love-$arg2-macos.zip
+    mv love.app mac.app
+    rm love-$arg2-macos.zip
+
+    cd ..
+    rm -rf linux
+    mkdir linux 
+    cd linux
+    touch runme
+    echo "./application/love" > runme
+    chmod +x runme
+    curl -L -O https://bitbucket.org/rude/love/downloads/love-$arg2-x86_64.tar.gz
+    tar -zxvf *.tar.gz
+    mv dest application
+    cd application
+    echo "#!/bin/sh
+          export LOVE_LAUNCHER_LOCATION="$(dirname "$(which "$0")")"
+          export LD_LIBRARY_PATH="${LOVE_LAUNCHER_LOCATION}/lib/x86_64-linux-gnu:${LOVE_LAUNCHER_LOCATION}/usr/bin:${LOVE_LAUNCHER_LOCATION}/usr/lib:${LOVE_LAUNCHER_LOCATION}/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH"
+          /sbin/ldconfig -p | grep -q libstdc++ || export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${LOVE_LAUNCHER_LOCATION}/libstdc++/"
+          exec ${LOVE_BIN_WRAPPER} "${LOVE_LAUNCHER_LOCATION}/usr/bin/love" "${LOVE_LAUNCHER_LOCATION}/game.love"" > love
+    chmod +x love
+    rm *.tar.gz
+
+    exit 0
+  
+  else
+    "echo" "DID NOT GIVE 2ND PARAMETER (2ND PARAMETER MUST BE VERSION NUMBER)"
+    exit 0
+  fi
 
 elif [ "$arg1" == "-H" ]; then
   "echo" "
@@ -84,6 +117,9 @@ elif [ "$arg1" == "-H" ]; then
 
     -S
     release for Source Code
+
+    -IL
+    download Windows, Mac, and Linux versions of love
 
 
   - by Stan O (https://stan.xyz)

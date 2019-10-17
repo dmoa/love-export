@@ -18,3 +18,5 @@ release for Linux
 -S <br>
 release for Source Code
 
+-IL <br>
+download Windows, Mac, and Linux versions of love
