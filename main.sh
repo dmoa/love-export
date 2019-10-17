@@ -85,6 +85,7 @@ elif [ "$arg1" == "-IL" ]; then
     chmod +x runme
     curl -L -O https://bitbucket.org/rude/love/downloads/love-$arg2-x86_64.tar.gz
     tar -zxvf *.tar.gz
+    rm *.tar.gz
     mv dest application
     cd application
     echo "#!/bin/sh
@@ -93,7 +94,6 @@ elif [ "$arg1" == "-IL" ]; then
           /sbin/ldconfig -p | grep -q libstdc++ || export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${LOVE_LAUNCHER_LOCATION}/libstdc++/"
           exec ${LOVE_BIN_WRAPPER} "${LOVE_LAUNCHER_LOCATION}/usr/bin/love" "${LOVE_LAUNCHER_LOCATION}/game.love"" > love
     chmod +x love
-    rm *.tar.gz
 
     exit 0
   
