@@ -1,7 +1,7 @@
 arg1=$1
 arg2=$2
 
-SCRIPT_PATH=$(dirname `which $0`)
+SCRIPT_PATH=$(dirname $(which $0))
 PROJECT_PATH=$(pwd)
 
 
