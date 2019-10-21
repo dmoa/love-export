@@ -59,7 +59,7 @@ elif [ "$arg1" == "-IL" ]; then
     unzip love-$arg2-win64.zip
     mv *win64 win
     rm love-$arg2-win64.zip
-    cd win 
+    cd win
     rm love.ico
     rm game.ico
     rm lovec.exe
@@ -78,7 +78,7 @@ elif [ "$arg1" == "-IL" ]; then
 
     cd ..
     rm -rf linux
-    mkdir linux 
+    mkdir linux
     cd linux
     touch runme
     echo "./application/love" > runme
@@ -96,7 +96,7 @@ elif [ "$arg1" == "-IL" ]; then
     chmod +x love
 
     exit 0
-  
+
   else
     "echo" "DID NOT GIVE 2ND PARAMETER (2ND PARAMETER MUST BE VERSION NUMBER)"
     exit 0
@@ -109,7 +109,7 @@ elif [ "$arg1" == "-H" ]; then
     -W
     release for windows
 
-    -M 
+    -M
     release for Mac
 
     -L
