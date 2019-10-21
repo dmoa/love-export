@@ -1,7 +1,7 @@
 arg1=$1
 arg2=$2
 
-SCRIPT_PATH=$(dirname $(which $0))
+SCRIPT_PATH=$(dirname $(command -v $0))
 PROJECT_PATH=$(pwd)
 
 
@@ -89,7 +89,7 @@ elif [ "$arg1" == "-IL" ]; then
     mv dest application
     cd application
     echo "#!/bin/sh
-          export LOVE_LAUNCHER_LOCATION="$(dirname "$(which "$0")")"
+          export LOVE_LAUNCHER_LOCATION="$(dirname "$(command -v "$0")")"
           export LD_LIBRARY_PATH="${LOVE_LAUNCHER_LOCATION}/lib/x86_64-linux-gnu:${LOVE_LAUNCHER_LOCATION}/usr/bin:${LOVE_LAUNCHER_LOCATION}/usr/lib:${LOVE_LAUNCHER_LOCATION}/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH"
           /sbin/ldconfig -p | grep -q libstdc++ || export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${LOVE_LAUNCHER_LOCATION}/libstdc++/"
           exec ${LOVE_BIN_WRAPPER} "${LOVE_LAUNCHER_LOCATION}/usr/bin/love" "${LOVE_LAUNCHER_LOCATION}/game.love"" > love
