@@ -59,7 +59,7 @@ elif [ "$arg1" = "-IL" ]; then
     rm -rf win
     curl -L -O https://bitbucket.org/rude/love/downloads/love-"$arg2"-win64.zip
     unzip love-"$arg2"-win64.zip
-    mv *win64 win
+    mv ./*win64 win
     rm love-"$arg2"-win64.zip
     cd win
     rm love.ico
@@ -86,8 +86,8 @@ elif [ "$arg1" = "-IL" ]; then
     echo "./application/love" > runme
     chmod +x runme
     curl -L -O https://bitbucket.org/rude/love/downloads/love-"$arg2"-x86_64.tar.gz
-    tar -zxvf *.tar.gz
-    rm *.tar.gz
+    tar -zxvf ./*.tar.gz
+    rm ./*.tar.gz
     mv dest application
     cd application
     cat > love <<'EOF'
