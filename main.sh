@@ -17,7 +17,7 @@ if [ "$arg1" = "-W" ]; then
   cat "$SCRIPT_PATH"/temp/love.exe "$SCRIPT_PATH"/temp/game.love > "$SCRIPT_PATH"/temp/game.exe
   rm "$SCRIPT_PATH"/temp/game.love
   rm "$SCRIPT_PATH"/temp/love.exe
-  cd "$SCRIPT_PATH"/temp/
+  cd "$SCRIPT_PATH"/temp/ || exit 1
   zip -r "$PROJECT_PATH"/releases/windows.zip .
   rm -rf "$SCRIPT_PATH"/temp
   "echo" "FINISHED"
@@ -29,7 +29,7 @@ elif [ "$arg1" = "-M" ]; then
   rm -rf "$SCRIPT_PATH"/temp
   cp -R "$SCRIPT_PATH"/mac "$SCRIPT_PATH"/temp
   cp "$PROJECT_PATH"/releases/game.love "$SCRIPT_PATH"/temp/mac.app/Contents/Resources
-  cd "$SCRIPT_PATH"/temp
+  cd "$SCRIPT_PATH"/temp || exit 1
   zip -r -y "$PROJECT_PATH"/releases/mac.zip . -x './releases/*' '.*'
   rm -rf "$SCRIPT_PATH"/temp
   "echo" "FINISHED"
@@ -42,7 +42,7 @@ elif [ "$arg1" = "-L" ]; then
   rm -rf "$SCRIPT_PATH"/temp
   cp -R "$SCRIPT_PATH"/linux "$SCRIPT_PATH"/temp
   cp "$PROJECT_PATH"/releases/game.love "$SCRIPT_PATH"/temp/application
-  cd "$SCRIPT_PATH"/temp
+  cd "$SCRIPT_PATH"/temp || exit 1
   zip -r "$PROJECT_PATH"/releases/linux.zip .
   rm -rf "$SCRIPT_PATH"/temp
   "echo" "FINISHED"
@@ -55,13 +55,13 @@ elif [ "$arg1" = "-S" ]; then
 
 elif [ "$arg1" = "-IL" ]; then
   if [ -n "$arg2" ]; then
-    cd "$SCRIPT_PATH"
+    cd "$SCRIPT_PATH" || exit 1
     rm -rf win
     curl -L -O https://bitbucket.org/rude/love/downloads/love-"$arg2"-win64.zip
     unzip love-"$arg2"-win64.zip
     mv ./*win64 win
     rm love-"$arg2"-win64.zip
-    cd win
+    cd win || exit 1
     rm love.ico
     rm game.ico
     rm lovec.exe
@@ -72,7 +72,7 @@ elif [ "$arg1" = "-IL" ]; then
     cd ..
     rm -rf mac
     mkdir mac
-    cd mac
+    cd mac || exit 1
     curl -L -O https://bitbucket.org/rude/love/downloads/love-"$arg2"-macos.zip
     unzip love-"$arg2"-macos.zip
     mv love.app mac.app
@@ -81,7 +81,7 @@ elif [ "$arg1" = "-IL" ]; then
     cd ..
     rm -rf linux
     mkdir linux
-    cd linux
+    cd linux || exit 1
     touch runme
     echo "./application/love" > runme
     chmod +x runme
@@ -89,7 +89,7 @@ elif [ "$arg1" = "-IL" ]; then
     tar -zxvf ./*.tar.gz
     rm ./*.tar.gz
     mv dest application
-    cd application
+    cd application || exit 1
     cat > love <<'EOF'
 #!/bin/sh
 LOVE_LAUNCHER_LOCATION="$(dirname "$(command -v "$0")")"
@@ -134,5 +134,5 @@ elif [ "$arg1" = "-H" ]; then
 
 else
   "echo" "INVALID PARAMETER GIVEN"
-  exit 0
+  exit 1
 fi
