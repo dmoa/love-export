@@ -1,7 +1,7 @@
 arg1=$1
 arg2=$2
 
-SCRIPT_PATH=$(dirname $(command -v $0))
+SCRIPT_PATH=$(dirname "$(command -v "$0")")
 PROJECT_PATH=$(pwd)
 
 
@@ -9,27 +9,27 @@ if [ "$arg1" == "-W" ]; then
   mkdir -p releases
   "echo" "Converting project to .love file"
   zip -r ./releases/game.love . -x './releases/*' '.*'
-  rm -rf $SCRIPT_PATH/temp
-  cp -R $SCRIPT_PATH/win $SCRIPT_PATH/temp
-  cp $PROJECT_PATH/releases/game.love $SCRIPT_PATH/temp
-  cat $SCRIPT_PATH/temp/love.exe $SCRIPT_PATH/temp/game.love > $SCRIPT_PATH/temp/game.exe
-  rm $SCRIPT_PATH/temp/game.love
-  rm $SCRIPT_PATH/temp/love.exe
-  cd $SCRIPT_PATH/temp/
-  zip -r $PROJECT_PATH/releases/windows.zip .
-  rm -rf $SCRIPT_PATH/temp
+  rm -rf "$SCRIPT_PATH"/temp
+  cp -R "$SCRIPT_PATH"/win "$SCRIPT_PATH"/temp
+  cp "$PROJECT_PATH"/releases/game.love "$SCRIPT_PATH"/temp
+  cat "$SCRIPT_PATH"/temp/love.exe "$SCRIPT_PATH"/temp/game.love > "$SCRIPT_PATH"/temp/game.exe
+  rm "$SCRIPT_PATH"/temp/game.love
+  rm "$SCRIPT_PATH"/temp/love.exe
+  cd "$SCRIPT_PATH"/temp/
+  zip -r "$PROJECT_PATH"/releases/windows.zip .
+  rm -rf "$SCRIPT_PATH"/temp
   "echo" "FINISHED"
 
 elif [ "$arg1" == "-M" ]; then
   mkdir -p releases
   "echo" "Converting project to .love file"
   zip -r ./releases/game.love . -x './releases/*' '.*'
-  rm -rf $SCRIPT_PATH/temp
-  cp -R $SCRIPT_PATH/mac $SCRIPT_PATH/temp
-  cp $PROJECT_PATH/releases/game.love $SCRIPT_PATH/temp/mac.app/Contents/Resources
-  cd $SCRIPT_PATH/temp
-  zip -r -y $PROJECT_PATH/releases/mac.zip . -x './releases/*' '.*'
-  rm -rf $SCRIPT_PATH/temp
+  rm -rf "$SCRIPT_PATH"/temp
+  cp -R "$SCRIPT_PATH"/mac "$SCRIPT_PATH"/temp
+  cp "$PROJECT_PATH"/releases/game.love "$SCRIPT_PATH"/temp/mac.app/Contents/Resources
+  cd "$SCRIPT_PATH"/temp
+  zip -r -y "$PROJECT_PATH"/releases/mac.zip . -x './releases/*' '.*'
+  rm -rf "$SCRIPT_PATH"/temp
   "echo" "FINISHED"
   exit 0
 
@@ -37,12 +37,12 @@ elif [ "$arg1" == "-L" ]; then
   mkdir -p releases
   "echo" "Converting project to .love file"
   zip -r ./releases/game.love . -x './releases/*' '.*'
-  rm -rf $SCRIPT_PATH/temp
-  cp -R $SCRIPT_PATH/linux $SCRIPT_PATH/temp
-  cp $PROJECT_PATH/releases/game.love $SCRIPT_PATH/temp/application
-  cd $SCRIPT_PATH/temp
-  zip -r $PROJECT_PATH/releases/linux.zip .
-  rm -rf $SCRIPT_PATH/temp
+  rm -rf "$SCRIPT_PATH"/temp
+  cp -R "$SCRIPT_PATH"/linux "$SCRIPT_PATH"/temp
+  cp "$PROJECT_PATH"/releases/game.love "$SCRIPT_PATH"/temp/application
+  cd "$SCRIPT_PATH"/temp
+  zip -r "$PROJECT_PATH"/releases/linux.zip .
+  rm -rf "$SCRIPT_PATH"/temp
   "echo" "FINISHED"
   exit 0
 
@@ -53,12 +53,12 @@ elif [ "$arg1" == "-S" ]; then
 
 elif [ "$arg1" == "-IL" ]; then
   if [ -n "$arg2" ]; then
-    cd $SCRIPT_PATH
+    cd "$SCRIPT_PATH"
     rm -rf win
-    curl -L -O https://bitbucket.org/rude/love/downloads/love-$arg2-win64.zip
-    unzip love-$arg2-win64.zip
+    curl -L -O https://bitbucket.org/rude/love/downloads/love-"$arg2"-win64.zip
+    unzip love-"$arg2"-win64.zip
     mv *win64 win
-    rm love-$arg2-win64.zip
+    rm love-"$arg2"-win64.zip
     cd win
     rm love.ico
     rm game.ico
@@ -71,10 +71,10 @@ elif [ "$arg1" == "-IL" ]; then
     rm -rf mac
     mkdir mac
     cd mac
-    curl -L -O https://bitbucket.org/rude/love/downloads/love-$arg2-macos.zip
-    unzip love-$arg2-macos.zip
+    curl -L -O https://bitbucket.org/rude/love/downloads/love-"$arg2"-macos.zip
+    unzip love-"$arg2"-macos.zip
     mv love.app mac.app
-    rm love-$arg2-macos.zip
+    rm love-"$arg2"-macos.zip
 
     cd ..
     rm -rf linux
@@ -83,7 +83,7 @@ elif [ "$arg1" == "-IL" ]; then
     touch runme
     echo "./application/love" > runme
     chmod +x runme
-    curl -L -O https://bitbucket.org/rude/love/downloads/love-$arg2-x86_64.tar.gz
+    curl -L -O https://bitbucket.org/rude/love/downloads/love-"$arg2"-x86_64.tar.gz
     tar -zxvf *.tar.gz
     rm *.tar.gz
     mv dest application
