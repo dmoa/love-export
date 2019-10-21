@@ -62,12 +62,7 @@ elif [ "$arg1" = "-IL" ]; then
     mv ./*win64 win
     rm love-"$arg2"-win64.zip
     cd win || exit 1
-    rm love.ico
-    rm game.ico
-    rm lovec.exe
-    rm readme.txt
-    rm license.txt
-    rm changes.txt
+    rm love.ico game.ico lovec.exe readme.txt changes.txt
 
     cd ..
     rm -rf mac
@@ -82,7 +77,6 @@ elif [ "$arg1" = "-IL" ]; then
     rm -rf linux
     mkdir linux
     cd linux || exit 1
-    touch runme
     echo "./application/love" > runme
     chmod +x runme
     curl -L -O https://bitbucket.org/rude/love/downloads/love-"$arg2"-x86_64.tar.gz
