@@ -7,7 +7,7 @@ SCRIPT_PATH=$(dirname "$(command -v "$0")")
 PROJECT_PATH=$(pwd)
 
 
-if [ "$arg1" == "-W" ]; then
+if [ "$arg1" = "-W" ]; then
   mkdir -p releases
   "echo" "Converting project to .love file"
   zip -r ./releases/game.love . -x './releases/*' '.*'
@@ -22,7 +22,7 @@ if [ "$arg1" == "-W" ]; then
   rm -rf "$SCRIPT_PATH"/temp
   "echo" "FINISHED"
 
-elif [ "$arg1" == "-M" ]; then
+elif [ "$arg1" = "-M" ]; then
   mkdir -p releases
   "echo" "Converting project to .love file"
   zip -r ./releases/game.love . -x './releases/*' '.*'
@@ -35,7 +35,7 @@ elif [ "$arg1" == "-M" ]; then
   "echo" "FINISHED"
   exit 0
 
-elif [ "$arg1" == "-L" ]; then
+elif [ "$arg1" = "-L" ]; then
   mkdir -p releases
   "echo" "Converting project to .love file"
   zip -r ./releases/game.love . -x './releases/*' '.*'
@@ -48,12 +48,12 @@ elif [ "$arg1" == "-L" ]; then
   "echo" "FINISHED"
   exit 0
 
-elif [ "$arg1" == "-S" ]; then
+elif [ "$arg1" = "-S" ]; then
   "echo" "Creating Source Code Zip"
   zip -r ./releases/source.zip . -x './releases/*' '.*'
   exit 0
 
-elif [ "$arg1" == "-IL" ]; then
+elif [ "$arg1" = "-IL" ]; then
   if [ -n "$arg2" ]; then
     cd "$SCRIPT_PATH"
     rm -rf win
@@ -106,7 +106,7 @@ EOF
     exit 0
   fi
 
-elif [ "$arg1" == "-H" ]; then
+elif [ "$arg1" = "-H" ]; then
   "echo" "
   Commands:
 
