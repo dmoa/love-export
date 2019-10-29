@@ -27,6 +27,9 @@ release for Mac
 -L <br>
 release for Linux
 
+-D <br>
+release for Desktop (Windows, Mac, and Linux)
+
 -S <br>
 release for Source Code
 

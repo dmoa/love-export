@@ -4,8 +4,7 @@ arg2=$2
 SCRIPT_PATH=$(dirname `which $0`)
 PROJECT_PATH=$(pwd)
 
-
-if [ "$arg1" == "-W" ]; then
+function windows {
   mkdir -p releases
   "echo" "Converting project to .love file"
   zip -r ./releases/game.love . -x './releases/*' '.*'
@@ -19,8 +18,9 @@ if [ "$arg1" == "-W" ]; then
   zip -r $PROJECT_PATH/releases/windows.zip .
   rm -rf $SCRIPT_PATH/temp
   "echo" "FINISHED"
+}
 
-elif [ "$arg1" == "-M" ]; then
+function mac {
   mkdir -p releases
   "echo" "Converting project to .love file"
   zip -r ./releases/game.love . -x './releases/*' '.*'
@@ -31,9 +31,9 @@ elif [ "$arg1" == "-M" ]; then
   zip -r -y $PROJECT_PATH/releases/mac.zip . -x './releases/*' '.*'
   rm -rf $SCRIPT_PATH/temp
   "echo" "FINISHED"
-  exit 0
+}
 
-elif [ "$arg1" == "-L" ]; then
+function linux {
   mkdir -p releases
   "echo" "Converting project to .love file"
   zip -r ./releases/game.love . -x './releases/*' '.*'
@@ -44,6 +44,27 @@ elif [ "$arg1" == "-L" ]; then
   zip -r $PROJECT_PATH/releases/linux.zip .
   rm -rf $SCRIPT_PATH/temp
   "echo" "FINISHED"
+}
+
+if [ "$arg1" == "-W" ]; then
+  "echo" "Exporting project to Windows"
+  windows
+  exit 0
+
+elif [ "$arg1" == "-M" ]; then
+  "echo" "Exporting project to Mac"
+  mac
+  exit 0
+
+elif [ "$arg1" == "-L" ]; then
+  "echo" "Exporting project to Linux"
+  exit 0
+
+elif [ "$arg1" == "-D" ]; then
+  "echo" "Exporting project to Windows, Mac, and Linux"
+  windows 
+  mac
+  linux
   exit 0
 
 elif [ "$arg1" == "-S" ]; then
@@ -107,13 +128,16 @@ elif [ "$arg1" == "-H" ]; then
   Commands:
 
     -W
-    release for windows
+    release for Windows
 
     -M 
     release for Mac
 
     -L
     release for Linux
+
+    -D
+    release for Desktop (Windows, Mac, and Linux)
 
     -S
     release for Source Code
@@ -132,4 +156,3 @@ else
   "echo" "INVALID PARAMETER GIVEN"
   exit 0
 fi
-  
