@@ -38,3 +38,6 @@ release for Source Code
 
 -IL [LOVE version number] <br>
 download Windows, Mac, and Linux versions of love
+
+-H <br>
+print available commands

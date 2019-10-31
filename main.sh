@@ -151,6 +151,8 @@ elif [ "$arg1" = "-H" ]; then
     -IL
     download Windows, Mac, and Linux versions of love
 
+    -H
+    print this page out
 
   - by Stan O (https://stan.xyz)
   - Repository at https://github.com/dmoa/love-export
