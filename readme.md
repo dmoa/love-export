@@ -30,6 +30,9 @@ release for Linux
 -D <br>
 release for Desktop (Windows, Mac, and Linux)
 
+-LF <br>
+release for .love file
+
 -S <br>
 release for Source Code
 

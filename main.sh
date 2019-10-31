@@ -68,6 +68,10 @@ elif [ "$arg1" == "-D" ]; then
   linux
   exit 0
 
+elif  [ "$arg1" == "-LF" ]; then
+  lovefile
+  exit 0
+
 elif [ "$arg1" == "-S" ]; then
   "echo" "Creating Source Code Zip"
   zip -r ./releases/source.zip . -x './releases/*' '.*'
@@ -139,6 +143,9 @@ elif [ "$arg1" == "-H" ]; then
 
     -D
     release for Desktop (Windows, Mac, and Linux)
+
+    -LF
+    release for .love file
 
     -S
     release for Source Code
