@@ -6,11 +6,13 @@ arg2=$2
 SCRIPT_PATH=$(dirname "$(command -v "$0")")
 PROJECT_PATH=$(pwd)
 
-
-if [ "$arg1" = "-W" ]; then
+function lovefile {
   mkdir -p releases
   "echo" "Converting project to .love file"
   zip -r ./releases/game.love . -x './releases/*' '.*'
+}
+
+function windows {  
   rm -rf "$SCRIPT_PATH"/temp
   cp -R "$SCRIPT_PATH"/win "$SCRIPT_PATH"/temp
   cp "$PROJECT_PATH"/releases/game.love "$SCRIPT_PATH"/temp
@@ -23,10 +25,7 @@ if [ "$arg1" = "-W" ]; then
   "echo" "FINISHED"
 }
 
-elif [ "$arg1" = "-M" ]; then
-  mkdir -p releases
-  "echo" "Converting project to .love file"
-  zip -r ./releases/game.love . -x './releases/*' '.*'
+function mac {
   rm -rf "$SCRIPT_PATH"/temp
   cp -R "$SCRIPT_PATH"/mac "$SCRIPT_PATH"/temp
   cp "$PROJECT_PATH"/releases/game.love "$SCRIPT_PATH"/temp/mac.app/Contents/Resources
@@ -36,10 +35,7 @@ elif [ "$arg1" = "-M" ]; then
   "echo" "FINISHED"
 }
 
-elif [ "$arg1" = "-L" ]; then
-  mkdir -p releases
-  "echo" "Converting project to .love file"
-  zip -r ./releases/game.love . -x './releases/*' '.*'
+function linux {
   rm -rf "$SCRIPT_PATH"/temp
   cp -R "$SCRIPT_PATH"/linux "$SCRIPT_PATH"/temp
   cp "$PROJECT_PATH"/releases/game.love "$SCRIPT_PATH"/temp/application
