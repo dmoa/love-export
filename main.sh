@@ -6,13 +6,13 @@ arg2=$2
 SCRIPT_PATH=$(dirname "$(command -v "$0")")
 PROJECT_PATH=$(pwd)
 
-function lovefile {
+lovefile() {
   mkdir -p releases
   "echo" "Converting project to .love file"
   zip -r ./releases/game.love . -x './releases/*' '.*'
 }
 
-function windows {  
+windows() {  
   rm -rf "$SCRIPT_PATH"/temp
   cp -R "$SCRIPT_PATH"/win "$SCRIPT_PATH"/temp
   cp "$PROJECT_PATH"/releases/game.love "$SCRIPT_PATH"/temp
@@ -25,7 +25,7 @@ function windows {
   "echo" "FINISHED"
 }
 
-function mac {
+mac() {
   rm -rf "$SCRIPT_PATH"/temp
   cp -R "$SCRIPT_PATH"/mac "$SCRIPT_PATH"/temp
   cp "$PROJECT_PATH"/releases/game.love "$SCRIPT_PATH"/temp/mac.app/Contents/Resources
@@ -35,7 +35,7 @@ function mac {
   "echo" "FINISHED"
 }
 
-function linux {
+linux() {
   rm -rf "$SCRIPT_PATH"/temp
   cp -R "$SCRIPT_PATH"/linux "$SCRIPT_PATH"/temp
   cp "$PROJECT_PATH"/releases/game.love "$SCRIPT_PATH"/temp/application
@@ -45,24 +45,24 @@ function linux {
   "echo" "FINISHED"
 }
 
-if [ "$arg1" == "-W" ]; then
+if [ "$arg1" = "-W" ]; then
   lovefile
   "echo" "Exporting project to Windows"
   windows
   exit 0
 
-elif [ "$arg1" == "-M" ]; then
+elif [ "$arg1" = "-M" ]; then
   lovefile
   "echo" "Exporting project to Mac"
   mac
   exit 0
 
-elif [ "$arg1" == "-L" ]; then
+elif [ "$arg1" = "-L" ]; then
   lovefile
   "echo" "Exporting project to Linux"
   exit 0
 
-elif [ "$arg1" == "-D" ]; then
+elif [ "$arg1" = "-D" ]; then
   lovefile
   "echo" "Exporting project to Windows, Mac, and Linux"
   windows 
@@ -70,7 +70,7 @@ elif [ "$arg1" == "-D" ]; then
   linux
   exit 0
 
-elif  [ "$arg1" == "-LF" ]; then
+elif  [ "$arg1" = "-LF" ]; then
   lovefile
   exit 0
 
@@ -160,5 +160,6 @@ elif [ "$arg1" = "-H" ]; then
 
 else
   "echo" "INVALID PARAMETER GIVEN"
+  "echo" "'love-export -H' for more info"
   exit 1
 fi
