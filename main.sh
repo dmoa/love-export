@@ -21,6 +21,7 @@ if [ "$arg1" = "-W" ]; then
   zip -r "$PROJECT_PATH"/releases/windows.zip .
   rm -rf "$SCRIPT_PATH"/temp
   "echo" "FINISHED"
+}
 
 elif [ "$arg1" = "-M" ]; then
   mkdir -p releases
@@ -33,7 +34,7 @@ elif [ "$arg1" = "-M" ]; then
   zip -r -y "$PROJECT_PATH"/releases/mac.zip . -x './releases/*' '.*'
   rm -rf "$SCRIPT_PATH"/temp
   "echo" "FINISHED"
-  exit 0
+}
 
 elif [ "$arg1" = "-L" ]; then
   mkdir -p releases
@@ -46,6 +47,35 @@ elif [ "$arg1" = "-L" ]; then
   zip -r "$PROJECT_PATH"/releases/linux.zip .
   rm -rf "$SCRIPT_PATH"/temp
   "echo" "FINISHED"
+}
+
+if [ "$arg1" == "-W" ]; then
+  lovefile
+  "echo" "Exporting project to Windows"
+  windows
+  exit 0
+
+elif [ "$arg1" == "-M" ]; then
+  lovefile
+  "echo" "Exporting project to Mac"
+  mac
+  exit 0
+
+elif [ "$arg1" == "-L" ]; then
+  lovefile
+  "echo" "Exporting project to Linux"
+  exit 0
+
+elif [ "$arg1" == "-D" ]; then
+  lovefile
+  "echo" "Exporting project to Windows, Mac, and Linux"
+  windows 
+  mac
+  linux
+  exit 0
+
+elif  [ "$arg1" == "-LF" ]; then
+  lovefile
   exit 0
 
 elif [ "$arg1" = "-S" ]; then
@@ -105,13 +135,19 @@ elif [ "$arg1" = "-H" ]; then
   Commands:
 
     -W
-    release for windows
+    release for Windows
 
     -M
     release for Mac
 
     -L
     release for Linux
+
+    -D
+    release for Desktop (Windows, Mac, and Linux)
+
+    -LF
+    release for .love file
 
     -S
     release for Source Code
