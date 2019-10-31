@@ -4,10 +4,13 @@ arg2=$2
 SCRIPT_PATH=$(dirname `which $0`)
 PROJECT_PATH=$(pwd)
 
-function windows {
+function lovefile {
   mkdir -p releases
   "echo" "Converting project to .love file"
   zip -r ./releases/game.love . -x './releases/*' '.*'
+}
+
+function windows {
   rm -rf $SCRIPT_PATH/temp
   cp -R $SCRIPT_PATH/win $SCRIPT_PATH/temp
   cp $PROJECT_PATH/releases/game.love $SCRIPT_PATH/temp
@@ -21,9 +24,6 @@ function windows {
 }
 
 function mac {
-  mkdir -p releases
-  "echo" "Converting project to .love file"
-  zip -r ./releases/game.love . -x './releases/*' '.*'
   rm -rf $SCRIPT_PATH/temp
   cp -R $SCRIPT_PATH/mac $SCRIPT_PATH/temp
   cp $PROJECT_PATH/releases/game.love $SCRIPT_PATH/temp/mac.app/Contents/Resources
@@ -34,9 +34,6 @@ function mac {
 }
 
 function linux {
-  mkdir -p releases
-  "echo" "Converting project to .love file"
-  zip -r ./releases/game.love . -x './releases/*' '.*'
   rm -rf $SCRIPT_PATH/temp
   cp -R $SCRIPT_PATH/linux $SCRIPT_PATH/temp
   cp $PROJECT_PATH/releases/game.love $SCRIPT_PATH/temp/application
@@ -47,20 +44,24 @@ function linux {
 }
 
 if [ "$arg1" == "-W" ]; then
+  lovefile
   "echo" "Exporting project to Windows"
   windows
   exit 0
 
 elif [ "$arg1" == "-M" ]; then
+  lovefile
   "echo" "Exporting project to Mac"
   mac
   exit 0
 
 elif [ "$arg1" == "-L" ]; then
+  lovefile
   "echo" "Exporting project to Linux"
   exit 0
 
 elif [ "$arg1" == "-D" ]; then
+  lovefile
   "echo" "Exporting project to Windows, Mac, and Linux"
   windows 
   mac
