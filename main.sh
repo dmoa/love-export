@@ -5,6 +5,7 @@ arg2=$2
 
 SCRIPT_PATH=$(dirname "$(command -v "$0")")
 PROJECT_PATH=$(pwd)
+PROJECT_NAME=${PWD##*/}  
 
 lovefile() {
   mkdir -p releases
@@ -20,7 +21,7 @@ windows() {
   rm "$SCRIPT_PATH"/temp/game.love
   rm "$SCRIPT_PATH"/temp/love.exe
   cd "$SCRIPT_PATH"/temp/ || exit 1
-  zip -r "$PROJECT_PATH"/releases/windows.zip .
+  zip -r "$PROJECT_PATH"/releases/"$PROJECT_NAME"_windows.zip .
   rm -rf "$SCRIPT_PATH"/temp
   "echo" "FINISHED"
 }
@@ -30,7 +31,7 @@ mac() {
   cp -R "$SCRIPT_PATH"/mac "$SCRIPT_PATH"/temp
   cp "$PROJECT_PATH"/releases/game.love "$SCRIPT_PATH"/temp/mac.app/Contents/Resources
   cd "$SCRIPT_PATH"/temp || exit 1
-  zip -r -y "$PROJECT_PATH"/releases/mac.zip . -x './releases/*' '.*'
+  zip -r -y "$PROJECT_PATH"/releases/"$PROJECT_NAME"_mac.zip . -x './releases/*' '.*'
   rm -rf "$SCRIPT_PATH"/temp
   "echo" "FINISHED"
 }
@@ -40,7 +41,7 @@ linux() {
   cp -R "$SCRIPT_PATH"/linux "$SCRIPT_PATH"/temp
   cp "$PROJECT_PATH"/releases/game.love "$SCRIPT_PATH"/temp/application
   cd "$SCRIPT_PATH"/temp || exit 1
-  zip -r "$PROJECT_PATH"/releases/linux.zip .
+  zip -r "$PROJECT_PATH"/releases/"$PROJECT_NAME"_linux.zip .
   rm -rf "$SCRIPT_PATH"/temp
   "echo" "FINISHED"
 }
@@ -60,6 +61,7 @@ elif [ "$arg1" = "-M" ]; then
 elif [ "$arg1" = "-L" ]; then
   lovefile
   "echo" "Exporting project to Linux"
+  linux
   exit 0
 
 elif [ "$arg1" = "-D" ]; then
