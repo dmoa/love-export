@@ -7,9 +7,9 @@ A simple release tool for the game framework LOVE
 
 1. Download the .sh file <br>
 
-2. Add it to your path (I call it lovex) <br>
+2. Add it to your path <br>
 
-3. Run [alias-name] -IL [LOVE version number] <br>
+3. Run love-export -IL [LOVE version number] <br>
 
 That's all folks! <br>
 
@@ -28,7 +28,7 @@ release for Mac
 release for Linux
 
 -D <br>
-release for Desktop (Windows, Mac, and Linux)
+makes 3 desktop releases: Windows, Mac, and Linux
 
 -LF <br>
 release for .love file
