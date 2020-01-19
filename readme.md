@@ -1,4 +1,4 @@
-lovex
+love-export
 ----
 A simple release tool for the game framework LOVE
 ----
