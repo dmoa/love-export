@@ -107,7 +107,7 @@ elif [ "$arg1" = "-IL" ]; then
     cd linux || exit 1
     echo "./application/love" > runme
     chmod +x runme
-    curl -L -O https://bitbucket.org/rude/love/downloads/love-"$arg2"-x86_64.tar.gz
+    curl -L -O https://bitbucket.org/rude/love/downloads/love-"$arg2"-linux-x86_64.tar.gz
     tar -zxvf ./*.tar.gz
     rm ./*.tar.gz
     mv dest application
