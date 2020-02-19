@@ -5,7 +5,7 @@ arg2=$2
 
 SCRIPT_PATH=$(dirname "$(command -v "$0")")
 PROJECT_PATH=$(pwd)
-PROJECT_NAME=${PWD##*/}  
+PROJECT_NAME=${PWD##*/}
 
 lovefile() {
   mkdir -p releases
@@ -13,7 +13,7 @@ lovefile() {
   zip -r ./releases/game.love . -x './releases/*' '.*'
 }
 
-windows() {  
+windows() {
   rm -rf "$SCRIPT_PATH"/temp
   cp -R "$SCRIPT_PATH"/win "$SCRIPT_PATH"/temp
   cp "$PROJECT_PATH"/releases/game.love "$SCRIPT_PATH"/temp
@@ -67,7 +67,7 @@ elif [ "$arg1" = "-L" ]; then
 elif [ "$arg1" = "-D" ]; then
   lovefile
   "echo" "Exporting project to Windows, Mac, and Linux"
-  windows 
+  windows
   mac
   linux
   exit 0
