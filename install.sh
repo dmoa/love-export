@@ -13,8 +13,8 @@ if [ "$(uname)" = "Darwin" ]; then
     # Do something under Mac OS X platform
     "echo" "detected MacOS"
     git_clone
-    printf "%s\n" 'alias love-export="$INSTALL_PATH"/main.sh' >> ~/.zshrc
-    source ~/.zshrc
+    printf "%s\n" 'alias love-export='$INSTALL_PATH'/love-export/main.sh' >> ~/.zshrc
+    zsh
 elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
     # Do something under GNU/Linux platform
     "echo" "detected Linux"
