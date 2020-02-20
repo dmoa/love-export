@@ -82,13 +82,14 @@ elif [ "$arg1" = "-S" ]; then
   exit 0
 
 elif [ "$arg1" = "-IL" ]; then
-  if [ -n "$arg2" ]; then
+    read -p "LOVE Version: " love_version
+
     cd "$SCRIPT_PATH" || exit 1
     rm -rf win
-    curl -L -O https://bitbucket.org/rude/love/downloads/love-"$arg2"-win64.zip
-    unzip love-"$arg2"-win64.zip
+    curl -L -O https://bitbucket.org/rude/love/downloads/love-"$love_version"-win64.zip
+    unzip love-"$love_version"-win64.zip
     mv ./*win64 win
-    rm love-"$arg2"-win64.zip
+    rm love-"$love_version"-win64.zip
     cd win || exit 1
     rm love.ico game.ico lovec.exe readme.txt changes.txt
 
@@ -96,10 +97,10 @@ elif [ "$arg1" = "-IL" ]; then
     rm -rf mac
     mkdir mac
     cd mac || exit 1
-    curl -L -O https://bitbucket.org/rude/love/downloads/love-"$arg2"-macos.zip
-    unzip love-"$arg2"-macos.zip
+    curl -L -O https://bitbucket.org/rude/love/downloads/love-"$love_version"-macos.zip
+    unzip love-"$love_version"-macos.zip
     mv love.app mac.app
-    rm love-"$arg2"-macos.zip
+    rm love-"$love_version"-macos.zip
 
     cd ..
     rm -rf linux
@@ -107,7 +108,7 @@ elif [ "$arg1" = "-IL" ]; then
     cd linux || exit 1
     echo "./application/love" > runme
     chmod +x runme
-    curl -L -O https://bitbucket.org/rude/love/downloads/love-"$arg2"-linux-x86_64.tar.gz
+    curl -L -O https://bitbucket.org/rude/love/downloads/love-"$love_version"-linux-x86_64.tar.gz
     tar -zxvf ./*.tar.gz
     rm ./*.tar.gz
     mv dest application

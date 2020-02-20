@@ -11,9 +11,7 @@ A simple release tool for the game framework LOVE
 
 <h3> Installation </h3>  <br>
 
-`curl -L -O https://github.com/dmoa/love-export/releases/download/v1.2/install.sh && chmod +x install.sh && ./install.sh`
-
-`love-export -IL 11.3`
+`curl -L -O https://github.com/dmoa/love-export/releases/download/v1.2/install.sh && sh install.sh`
 
 <br>
 
