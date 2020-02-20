@@ -10,7 +10,6 @@ git_clone() {
 }
 
 install_love() {
-    read -p "LOVE Version: " love_version
     ./main.sh -IL
 }
 
