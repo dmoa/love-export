@@ -1,43 +1,68 @@
+
 love-export
+
 ----
+
 A simple release tool for the game framework LOVE
+
 ----
-<br>
-<h3> Installation </h3> <br>
-
-1. Download the .sh file <br>
-
-2. Add it to your path <br>
-
-3. Run love-export -IL [LOVE version number] <br>
-
-That's all folks! <br>
-
-PS: (I hope to make a installation script that does this for you, stick around!)
 
 <br>
-<h3> Commands: </h3> <br>
 
--W <br>
+<h3> Installation </h3>  <br>
+
+`curl -L -O https://github.com/dmoa/love-export/releases/download/v1.2/install.sh && chmod +x install.sh && ./install.sh`
+
+`love-export -IL 11.3`
+
+<br>
+
+<h3> Commands: </h3>  <br>
+
+
+
+`-W`  <br>
+
 release for windows
 
--M <br>
+
+
+`-M`  <br>
+
 release for Mac
 
--L <br>
+
+
+`-L`  <br>
+
 release for Linux
 
--D <br>
+
+
+`-D`  <br>
+
 makes 3 desktop releases: Windows, Mac, and Linux
 
--LF <br>
+
+
+`-LF`  <br>
+
 release for .love file
 
--S <br>
+
+
+`-S`  <br>
+
 release for Source Code
 
--IL [LOVE version number] <br>
+
+
+`-IL [LOVE version number]`  <br>
+
 download Windows, Mac, and Linux versions of love
 
--H <br>
+
+
+`-H`  <br>
+
 print available commands
