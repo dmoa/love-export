@@ -4,7 +4,7 @@ love-export is a script that exports LOVE2D games to desktop
 
 ## Installation
 
-Run the following in terminal (windows users have to have [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10) or [Cygwin](https://www.cygwin.com/))
+Run the following in terminal (windows users need [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10) or [Cygwin](https://www.cygwin.com/))
 
 ```bash
 curl -s -L https://github.com/dmoa/love-export/releases/download/v1.2/install.sh | bash
