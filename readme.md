@@ -1,66 +1,34 @@
+# love-export
 
-love-export
+love-export is a script that exports LOVE2D games to desktop
 
-----
+## Installation
 
-A simple release tool for the game framework LOVE
+Run the following in terminal (windows users have to have [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10) or [Cygwin](https://www.cygwin.com/))
 
-----
+```bash
+curl -s -L https://github.com/dmoa/love-export/releases/download/v1.2/install.sh | bash
+```
 
-<br>
+## Usage
 
-<h3> Installation </h3>  <br>
+```bash
+love-export -IL 11.3 # Install LOVE2D Version 11.3 [run on installation]
 
-`curl -L -O https://github.com/dmoa/love-export/releases/download/v1.2/install.sh && sh install.sh`
+love-export -W       # Windows
+love-export -M       # Mac
+love-export -L       # Linux
+love-export -D       # Windows, Mac, and Linux
 
-<br>
+love-export -LF      # .love file
+love-export -S       # source code
 
-<h3> Commands: </h3>  <br>
+love-export -H       # print available commands
+```
 
-
-
-`-W`  <br>
-
-release for windows
-
-
-
-`-M`  <br>
-
-release for Mac
-
-
-
-`-L`  <br>
-
-release for Linux
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 
-
-`-D`  <br>
-
-makes 3 desktop releases: Windows, Mac, and Linux
-
-
-
-`-LF`  <br>
-
-release for .love file
-
-
-
-`-S`  <br>
-
-release for Source Code
-
-
-
-`-IL [LOVE version number]`  <br>
-
-download Windows, Mac, and Linux versions of love
-
-
-
-`-H`  <br>
-
-print available commands
+## License
+[GPL](https://choosealicense.com/licenses/gpl-3.0/)
