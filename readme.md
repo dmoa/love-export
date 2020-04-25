@@ -10,6 +10,13 @@ Run the following in terminal (windows users need [WSL](https://docs.microsoft.c
 curl -s -L https://github.com/dmoa/love-export/releases/download/v1.2/install.sh | bash
 ```
 
+## Dependencies
+
+```bash
+zip
+unzip
+```
+
 ## Usage
 
 ```bash
