@@ -20,7 +20,7 @@ unzip
 ## Usage
 
 ```bash
-love-export -IL 11.3 # Install LOVE2D Version 11.3 [run on installation]
+love-export -IL      # Installs LOVE2D, recommended version: 11.3
 
 love-export -W       # Windows
 love-export -M       # Mac
